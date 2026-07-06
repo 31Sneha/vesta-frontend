@@ -51,7 +51,7 @@ export default function Dashboard() {
         <img
           src="/logo_Vesta.png"
           alt="Vesta logo"
-          style={{ width: '240px', height: '240px' }}
+          style={{ width: '200px', height: '200px', objectFit: 'contain' }}
         />
       </div>
 
