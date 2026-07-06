@@ -53,6 +53,7 @@ export default function Dashboard() {
           alt="Vesta logo"
           style={{ width: '240px', height: '240px' }}
         />
+      </div>
 
       <div className="kpi-row">
         <div className="kpi-card">
