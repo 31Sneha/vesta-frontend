@@ -43,7 +43,7 @@ export default function Dashboard() {
 
   return (
     <div className="main-content">
-      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
           <h2 className="page-title">Good {getGreeting()}, {user?.name?.split(' ')[0]}.</h2>
           <div className="page-subtitle">{monthLabel(month)} at a glance</div>
@@ -51,7 +51,7 @@ export default function Dashboard() {
         <img
           src="/logo_Vesta.png"
           alt="Vesta logo"
-          style={{ width: '200px', height: '200px', objectFit: 'contain' }}
+          style={{ width: '160px', height: '160px', objectFit: 'contain' }}
         />
       </div>
 
