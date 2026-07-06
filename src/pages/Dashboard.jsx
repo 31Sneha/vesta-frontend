@@ -51,9 +51,8 @@ export default function Dashboard() {
         <img
           src="/logo_Vesta.png"
           alt="Vesta logo"
-          style={{ width: '56px', height: '56px' }}
+          style={{ width: '96px', height: '96px' }}
         />
-      </div>
 
       <div className="kpi-row">
         <div className="kpi-card">
