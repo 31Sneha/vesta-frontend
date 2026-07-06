@@ -29,6 +29,11 @@ export default function Login() {
     <div className="auth-wrapper">
       <div className="auth-card">
         <div className="auth-logo">
+          <img
+            src="/logo_Vesta.png"
+            alt="Vesta logo"
+            style={{ width: '72px', height: '72px', marginBottom: '0.75rem' }}
+          />
           <h1>Vesta</h1>
           <div><span>Personal Finance Intelligence</span></div>
         </div>
