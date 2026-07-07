@@ -43,17 +43,19 @@ export default function Dashboard() {
 
   return (
     <div className="main-content">
-      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
-          <h2 className="page-title">Good {getGreeting()}, {user?.name?.split(' ')[0]}.</h2>
+          <h2 className="page-title">Good {getGreeting()}, <em>{user?.name?.split(' ')[0]}</em>.</h2>
           <div className="page-subtitle">{monthLabel(month)} at a glance</div>
         </div>
         <img
           src="/logo_Vesta.png"
           alt="Vesta logo"
-          style={{ width: '160px', height: '160px', objectFit: 'contain' }}
+          style={{ width: '160px', height: '160px' }}
         />
       </div>
+
+      <div className="lux-divider"><span className="lux-diamond" /></div>
 
       <div className="kpi-row">
         <div className="kpi-card">

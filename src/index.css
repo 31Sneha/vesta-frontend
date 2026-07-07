@@ -24,6 +24,7 @@
   --radius-lg: 8px;
   --shadow-card: 0 1px 4px rgba(27,58,75,0.08), 0 4px 20px rgba(27,58,75,0.06);
   --shadow-elevated: 0 8px 32px rgba(27,58,75,0.12);
+  --shadow-hover: 0 14px 40px rgba(27,58,75,0.16);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -57,6 +58,11 @@ h1, h2, h3, h4 {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: 1.5rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
 }
 
 .btn {
@@ -191,7 +197,7 @@ label {
 }
 
 .page-header {
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .page-title {
@@ -201,10 +207,37 @@ label {
   color: var(--navy);
 }
 
+.page-title em {
+  font-style: italic;
+  color: var(--maroon);
+}
+
 .page-subtitle {
   font-size: 0.85rem;
   color: var(--muted);
   margin-top: 0.25rem;
+}
+
+/* Signature: hairline + diamond divider, echoes the logo's laurel motif */
+.lux-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0 2rem;
+}
+.lux-divider::before,
+.lux-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold) 50%, transparent);
+}
+.lux-divider .lux-diamond {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  background: var(--gold);
+  transform: rotate(45deg);
 }
 
 .kpi-row {
@@ -220,7 +253,35 @@ label {
   border-radius: var(--radius-lg);
   padding: 1.25rem 1.5rem;
   box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: fadeInUp 0.5s ease both;
 }
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--navy));
+  opacity: 0;
+  transform: scaleX(0.6);
+  transform-origin: left;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(184,151,58,0.35);
+}
+.kpi-card:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+.kpi-row .kpi-card:nth-child(1) { animation-delay: 0.05s; }
+.kpi-row .kpi-card:nth-child(2) { animation-delay: 0.12s; }
+.kpi-row .kpi-card:nth-child(3) { animation-delay: 0.19s; }
+.kpi-row .kpi-card:nth-child(4) { animation-delay: 0.26s; }
 
 .kpi-label {
   font-size: 0.7rem;
@@ -233,9 +294,10 @@ label {
 
 .kpi-value {
   font-family: var(--font-display);
-  font-size: 1.9rem;
+  font-size: 2.1rem;
   font-weight: 300;
   line-height: 1.1;
+  font-variant-numeric: tabular-nums;
 }
 
 .kpi-sub {
@@ -376,6 +438,16 @@ label {
 }
 .alert-error   { background: rgba(192,57,43,0.08); color: var(--danger); border: 1px solid rgba(192,57,43,0.2); }
 .alert-success { background: rgba(45,106,79,0.08); color: var(--emerald); border: 1px solid rgba(45,106,79,0.2); }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kpi-card { animation: none; }
+  .card, .kpi-card { transition: none; }
+}
 
 @media (max-width: 768px) {
   .sidebar { display: none; }
